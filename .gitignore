@@ -1,9 +1,29 @@
+# gitignore für ein Projekt (submodule)
+#
+# git soll folgendes behandeln:
+#
+#    Alle Dateien in webdev (scripte, vscode-Arbeitsbereich)
+#    Den projects Ordner (Projekte und tailwind-Dateien)
+#    Den tailwind-Ordner ohne die Module
+
+# Note:
+# To effectively apply the changes you will have
+# to re-index the git index (if there are already
+# commited files)
+#
+# $ git rm -r -f --cached .
+# $ git add .
+# $ git commit -m ".gitignore index rebuild"
+
+######################################
+# Schliesse aus:
+######################################
+
 /vendor
 /composer.lock
 
 # cypress
 cypress.config.js
-package-lock.json
 
 # node
 node_modules
