@@ -4,6 +4,15 @@ describe("The Login Page", () => {
     cy.exec("npm run db:reset");
   });
 
+  it("visit homepage", () => {
+    // Visit the home page
+    cy.visit("/");
+
+    // We should be redirected to /meine-bestellungen
+    cy.url().should("include", "/isotopedemo.loc");
+  });
+
+  // it logs in successfully
   it("logs in successfully", () => {
     // Visit a login page - we take the demos startpage here
     cy.visit("/");
@@ -16,5 +25,5 @@ describe("The Login Page", () => {
 
     // We should be redirected to /meine-bestellungen
     cy.url().should("include", "/meine-bestellungen");
-  });
+  }); // it logs in successfully
 });
