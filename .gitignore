@@ -24,6 +24,7 @@
 
 # cypress
 cypress.config.js
+cypress.yml # workflow frame for a cypress run on a contao website with isotope demo installed
 
 # node
 node_modules
