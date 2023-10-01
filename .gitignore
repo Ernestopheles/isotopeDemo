@@ -1,2 +1,9 @@
 /vendor
 /composer.lock
+
+# cypress
+cypress.config.js
+package-lock.json
+
+# node
+node_modules
