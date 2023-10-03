@@ -24,11 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// import "@testing-library/cypress/add-commands";
+import "@testing-library/cypress/add-commands";
 
-// Fill in a login form
+// Login
 Cypress.Commands.add("login", (username, password) => {
-  // Type the username and password into input fields using their name
+  // Type the username and password into input fields
   cy.get("input[name=username]").type(username);
   cy.get("input[name=password]").type(`${password}{enter}`, { log: false });
   // our auth cookie should be present
