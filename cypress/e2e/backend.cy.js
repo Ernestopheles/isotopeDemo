@@ -1,5 +1,8 @@
 describe("Test formal functions of backend", () => {
-  beforeEach(() => {
+  before(() => {
+    // Reset the database and wait for it to complete
+    cy.exec("npm run db:reset").its("code").should("eq", 0);
+
     // Navigate to the frontend's startpage
     cy.visit("/");
 
@@ -13,11 +16,6 @@ describe("Test formal functions of backend", () => {
     cy.get("input[name=username]").type("k.jones");
     cy.get("input[name=password]").type("kevinjones");
     cy.get('button[type="submit"').click();
-  });
-
-  // reset the database once
-  it("reset the database", () => {
-    cy.exec("npm run db:reset");
   });
 
   it("dummy test", () => {

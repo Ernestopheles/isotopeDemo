@@ -19,7 +19,7 @@ connection.connect((err) => {
   console.log("Connected to the database server.");
 
   // Define the path to your fixture SQL file
-  const fixtureFilePath = "cypress/fixtures/db_isotopeDemo.sql";
+  const fixtureFilePath = "cypress/fixtures/isotope-demo.sql";
 
   // Execute SQL command to drop the database
   const dropDBSQL = "DROP DATABASE IF EXISTS db_isotopeDemo;";
