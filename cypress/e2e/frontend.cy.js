@@ -1,4 +1,4 @@
-describe("Test formal functions of webside", () => {
+describe("Test formal functions of website", () => {
   beforeEach(() => {
     // Navigate to the startpage
     cy.visit("/");
