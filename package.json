@@ -5,7 +5,7 @@
   "main": "cypress.config.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "db:reset": "node cypress/e2e/reset-isotopeDemo-DB.js"
+    "db:reset": "node cypress/e2e/resetDB-isotope-demo.js"
   },
   "author": "",
   "license": "ISC",

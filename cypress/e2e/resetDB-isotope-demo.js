@@ -1,15 +1,14 @@
 const mysql = require("mysql");
 const fs = require("fs");
 
-// Create a MySQL database connection
 const connection = mysql.createConnection({
   multipleStatements: true,
   host: "localhost",
+  port: 3306, // Der Port der MySQL-Datenbank
   user: "root",
   password: "",
 });
 
-// Connect to the database server
 connection.connect((err) => {
   if (err) {
     console.error("Error connecting to the database server:", err);
@@ -18,11 +17,9 @@ connection.connect((err) => {
 
   console.log("Connected to the database server.");
 
-  // Define the path to your fixture SQL file
   const fixtureFilePath = "cypress/fixtures/isotope-demo.sql";
 
-  // Execute SQL command to drop the database
-  const dropDBSQL = "DROP DATABASE IF EXISTS db_isotopeDemo;";
+  const dropDBSQL = "DROP DATABASE IF EXISTS `isotope-demo`;";
   connection.query(dropDBSQL, (dropErr) => {
     if (dropErr) {
       console.error("Error dropping the database:", dropErr);
@@ -31,8 +28,7 @@ connection.connect((err) => {
     }
     console.log("Database dropped successfully.");
 
-    // Execute SQL command to create a new database
-    const createDBSQL = "CREATE DATABASE db_isotopeDemo;";
+    const createDBSQL = "CREATE DATABASE `isotope-demo`;";
     connection.query(createDBSQL, (createErr) => {
       if (createErr) {
         console.error("Error creating the database:", createErr);
@@ -40,8 +36,7 @@ connection.connect((err) => {
         return;
       }
 
-      // Use the newly created database
-      const useDBSQL = "USE db_isotopeDemo;";
+      const useDBSQL = "USE `isotope-demo`;";
       connection.query(useDBSQL, (useErr) => {
         if (useErr) {
           console.error("Error using the database:", useErr);
@@ -49,7 +44,6 @@ connection.connect((err) => {
           return;
         }
 
-        // Read the fixture SQL file
         fs.readFile(fixtureFilePath, "utf-8", (readErr, sqlContent) => {
           if (readErr) {
             console.error("Error reading fixture file:", readErr);
@@ -57,15 +51,19 @@ connection.connect((err) => {
             return;
           }
 
-          // Execute the SQL commands to reset the database
-          connection.query(sqlContent, (queryErr) => {
+          const resetDBSQL = `
+            START TRANSACTION;
+            ${sqlContent}
+            COMMIT;
+          `;
+
+          connection.query(resetDBSQL, (queryErr) => {
             if (queryErr) {
               console.error("Error resetting the database:", queryErr);
             } else {
               console.log("Database reset successful.");
             }
 
-            // Close the database connection
             connection.end();
           });
         });
