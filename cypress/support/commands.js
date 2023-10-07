@@ -45,7 +45,7 @@ Cypress.Commands.add("getBySelLike", (selector, ...args) => {
   return cy.get(`[data-test*=${selector}]`, ...args);
 });
 
-// Mock a file selection and upload
+// Mock a file selection and upload; unsure if useful, not used till now
 Cypress.Commands.add("mockFileUpload", (selector, fileUrl) => {
   cy.fixture(fileUrl, "base64").then((fileContent) => {
     cy.get(selector).then(($input) => {

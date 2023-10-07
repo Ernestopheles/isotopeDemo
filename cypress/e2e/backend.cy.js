@@ -12,7 +12,7 @@ describe("Test formal functions of backend", () => {
     cy.get('button[type="submit"').click();
   });
 
-  it('create product "Another stone"', () => {
+  it('create product "Another stone", edit it and delete it', () => {
     // Click the User link in the top menu
     cy.get(".profile > button").click();
 
@@ -65,15 +65,12 @@ describe("Test formal functions of backend", () => {
     // // // click "Upload files" button
     // // cy.get(".qq-upload-button-selector > input").click();
 
+    // We cannot (not easily at least) choose a file as cypress does not have access to the backend itself; this approach I did not examine further:
     // // Select file from local machine - mock
     // cy.mockFileUpload('input[type="file"]', "isotope/s/stone.jpg");
-
-    // We cannot (not easily at least) choose a file as cypress does not have access to the backend itself
-
     // // type in alt text
     // cy.get('[name="images[0][alt]"]').clear("A");
     // cy.get('[name="images[0][alt]"]').type("Another Stone");
-
     // // type in description text
     // cy.get(".col_2 > .tl_textarea").click();
 
@@ -86,6 +83,24 @@ describe("Test formal functions of backend", () => {
 
     // Click "SaveNClose" button
     cy.get("#saveNclose").click();
-    /* ==== End Cypress Studio ==== */
+
+    // Click the newly created product "Another Stone" in the still opened product panel
+    cy.get(":nth-child(16) > .tl_right_nowrap > .edit > img").click();
+
+    // Click
+    cy.get("#ctrl_teaser").click();
+    cy.get('textarea[name="teaser"]').type(
+      "Another Stone, added by cypress test"
+    );
+
+    // Change the price
+    cy.get("#ctrl_price").clear("3");
+    cy.get("#ctrl_price").type("390");
+
+    // Click "SaveNClose" button
+    cy.get("#saveNclose").click();
+
+    // Click the newly created product "Another Stone" in the still opened product panel
+    cy.get(":nth-child(16) > .tl_right_nowrap > .delete > img").click();
   });
 });
