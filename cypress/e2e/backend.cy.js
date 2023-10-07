@@ -4,7 +4,7 @@ describe("Test formal functions of backend", () => {
     cy.exec("npm run db:reset").its("code").should("eq", 0);
 
     // Navigate to the backend's startpage
-    cy.visit("https://isotope-demo.loc/contao");
+    cy.visit("https://isotopedemo.loc/contao");
 
     // Type the username and password into input fields
     cy.get("input[name=username]").type("k.jones");
