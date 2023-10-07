@@ -44,3 +44,21 @@ Cypress.Commands.add("getBySel", (selector, ...args) => {
 Cypress.Commands.add("getBySelLike", (selector, ...args) => {
   return cy.get(`[data-test*=${selector}]`, ...args);
 });
+
+// Mock a file selection and upload
+Cypress.Commands.add("mockFileUpload", (selector, fileUrl) => {
+  cy.fixture(fileUrl, "base64").then((fileContent) => {
+    cy.get(selector).then(($input) => {
+      // Create a blob object from the file contents
+      const blob = Cypress.Blob.base64StringToBlob(fileContent, "image/jpeg");
+
+      // Create a file object from the blob
+      const file = new File([blob], "mocked-file.jpg", { type: "image/jpeg" });
+
+      // Exchange the inmput field object with the created file object
+      cy.wrap($input)
+        .invoke("prop", "files", [file])
+        .trigger("change", { force: true });
+    });
+  });
+});

@@ -164,4 +164,17 @@ describe("Test formal functions of website", () => {
     //Now we can click "Order"
     cy.get(".confirm").click();
   });
+
+  it("Backend link", () => {
+    // Get the first backend link and click it
+    cy.get("a[href*='/contao']")
+      .first()
+      .invoke("removeAttr", "target") // Remove the target attribute to open in the same window
+      .click();
+
+    // Type the username and password into input fields
+    cy.get("input[name=username]").type("k.jones");
+    cy.get("input[name=password]").type("kevinjones");
+    cy.get('button[type="submit"').click();
+  });
 });
