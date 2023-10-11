@@ -16,15 +16,21 @@
         "issues": "https://github.com/isotope/demo/issues",
         "source": "https://github.com/isotope/demo"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../isotope/isotopeCore"
+        }
+    ],
     "require": {
         "php": "^7.4 || ^8.0",
         "composer-plugin-api": "^1.1 || ^2.0",
         "contao/manager-bundle": "4.13.*",
-        "isotope/isotope-core": "2.8.*",
         "terminal42/contao-easy_themes": "^3.0",
         "terminal42/contao-changelanguage": "^3.1"
     },
     "require-dev": {
+        "isotope/isotope-core": "@dev",
         "contao/manager-plugin": "^2.7",
         "composer/composer": "^1.9"
     },
@@ -41,5 +47,14 @@
         "contao-manager-plugin": "Isotope\\Demo\\ContaoManager\\Plugin"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": true,
+            "contao/manager-plugin": true,
+            "contao-community-alliance/composer-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }
