@@ -24,13 +24,13 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
+        "isotope/isotope-core": "@dev",
         "composer-plugin-api": "^1.1 || ^2.0",
         "contao/manager-bundle": "4.13.*",
         "terminal42/contao-easy_themes": "^3.0",
         "terminal42/contao-changelanguage": "^3.1"
     },
     "require-dev": {
-        "isotope/isotope-core": "@dev",
         "contao/manager-plugin": "^2.7",
         "composer/composer": "^1.9"
     },
