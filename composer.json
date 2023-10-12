@@ -19,7 +19,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../isotopeCore"
+            "url": "../isotopeCore4"
         }
     ],
     "require": {
