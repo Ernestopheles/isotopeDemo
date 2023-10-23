@@ -37,5 +37,12 @@
         "post-update-cmd": [
             "@php vendor/bin/contao-setup"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": true,
+            "contao/manager-plugin": true
+        }
     }
 }
